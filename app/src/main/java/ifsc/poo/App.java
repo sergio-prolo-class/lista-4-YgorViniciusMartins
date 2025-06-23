@@ -3,12 +3,15 @@
  */
 package ifsc.poo;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import domain.Desenhista;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Desenhista desenhista = new Desenhista(); //Cria o desenhista
+        desenhista.exibeTela(); //Exibe o quadro branco na tela
+
+
+
+        System.out.println("A");
     }
 }
