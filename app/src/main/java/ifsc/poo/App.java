@@ -4,14 +4,24 @@
 package ifsc.poo;
 
 import domain.Desenhista;
+import edu.princeton.cs.algs4.Draw;
 
 public class App {
     public static void main(String[] args) {
-        Desenhista desenhista = new Desenhista(); //Cria o desenhista
-        desenhista.exibeTela(); //Exibe o quadro branco na tela
+        info();
+        aplicacao();
+    }
 
+    public static void info(){ //Informa o usuário de como o programa funciona
 
+    }
 
-        System.out.println("A");
+    public static void aplicacao(){ //Roda a aplicação
+        Desenhista desenhista = new Desenhista(); //Cria o nosso desenhista
+        Draw ouvidor = new Draw();
+
+        while(true){ //Permanece executando a aplicação até que o programa em si seja fechado
+
+        }
     }
 }

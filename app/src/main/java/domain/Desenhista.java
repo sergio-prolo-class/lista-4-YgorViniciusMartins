@@ -28,27 +28,17 @@ public class Desenhista {
         this.draw.show();
     }
 
-    public void desenhaCirculo(Circulo circulo){
-
+    public int getEscala_x(){
+        return this.escala_x;
     }
 
-    public void desenhaHexagono(Hexagono hexagono){
-
+    public int getEscala_y(){
+        return this.escala_y;
     }
 
-    public void desenhaLosango(Losango losango){
-
+    public boolean corDisponivel(String cor){
+        return cores.contains(cor);
     }
 
-    public void desenhaPentagono(Pentagono pentagono){
-
-    }
-
-    public void desenhaQuadrado(Quadrado quadrado){
-
-    }
-
-    public void desenhaTrapezio(Trapezio trapezio){
-
-    }
+    public void desenha(){} //Método de sobrescrita
 }
