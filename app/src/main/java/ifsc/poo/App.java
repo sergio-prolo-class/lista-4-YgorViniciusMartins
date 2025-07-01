@@ -18,10 +18,7 @@ public class App {
 
     public static void aplicacao(){ //Roda a aplicação
         Desenhista desenhista = new Desenhista(); //Cria o nosso desenhista
-        Draw ouvidor = new Draw();
+        desenhista.exibeTela();
 
-        while(true){ //Permanece executando a aplicação até que o programa em si seja fechado
-
-        }
     }
 }

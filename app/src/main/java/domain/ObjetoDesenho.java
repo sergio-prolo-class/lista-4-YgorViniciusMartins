@@ -5,7 +5,7 @@ public class ObjetoDesenho {
     protected String cor_preenchimento; // Cor de preenchimento do objeto
     protected Ponto ponto_central; //Ponto central, obtido pelo click do mouse
     protected int tamanho; //Tamanho da figura
-    private boolean ehValido;
+    private final boolean ehValido;
 
     public ObjetoDesenho(String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
         Desenhista desenhista = new Desenhista();
@@ -32,4 +32,5 @@ public class ObjetoDesenho {
     public String getCor_preenchimento(){
         return this.cor_preenchimento;
     }
+
 }
