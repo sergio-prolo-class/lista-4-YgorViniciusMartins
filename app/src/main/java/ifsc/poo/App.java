@@ -5,6 +5,7 @@ package ifsc.poo;
 
 import domain.Desenhista;
 import domain.Ponto;
+import domain.Relatorio;
 import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
@@ -20,6 +21,7 @@ public class App implements DrawListener {
     private static String cor_preenchimento_atual;
     private static boolean preenchido; //True => Preenchido, False => Vazado
     private static boolean tecla_pressionada;
+    private static Relatorio relatorio;
 
     public App(){
         tamanho_atual = PASSO;
@@ -30,6 +32,7 @@ public class App implements DrawListener {
         tecla_pressionada = false;
         desenhista = new Desenhista(listener);
         listener.addListener(this);
+        relatorio = new Relatorio();
     }
 
 
@@ -89,7 +92,7 @@ public class App implements DrawListener {
     @Override
     public void mousePressed(double x, double y){
         Ponto ponto = new Ponto(x,y);
-        desenhista.desenha(forma_atual, cor_linha_atual ,cor_preenchimento_atual, ponto, tamanho_atual);
+        desenhista.desenha(forma_atual, cor_linha_atual ,cor_preenchimento_atual, ponto, tamanho_atual, relatorio);
         desenhista.updateTela();
     }
 
@@ -121,8 +124,12 @@ public class App implements DrawListener {
                 desenhista.limpaTela();
                 desenhista.updateTela();
                 System.out.println("Tela foi limpa!");
+                relatorio.limpasFormasArmazenadas();
                 break;
             case 'p':
+                System.out.println("Quantidade de formas: " + relatorio.getQtdFormas());
+                System.out.println("Perímetro das formas: " + relatorio.getPerimetroFormas());
+                System.out.println("Área das formas: " + relatorio.getAreaFormas());
                 break;
             default:
                 return;
@@ -139,12 +146,18 @@ public class App implements DrawListener {
         tecla_pressionada = true;
         switch (keycode){ //Movedor
             case LEFT_KEY: //Esquerda
+                System.out.println(keycode);
+                desenhista.deslocarDesenhos(relatorio, -PASSO, 0);
+                desenhista.updateTela();
                 break;
             case UP_KEY: //Cima
+                desenhista.deslocarDesenhos(relatorio, 0 , PASSO);
                 break;
             case RIGHT_KEY: //Direita
+                desenhista.deslocarDesenhos(relatorio, PASSO, 0);
                 break;
             case DOWN_KEY: //Baixo
+                desenhista.deslocarDesenhos(relatorio, 0, -PASSO);
                 break;
         }
         if(keycode >= F1 && keycode <= F4) { //Seletor de formas

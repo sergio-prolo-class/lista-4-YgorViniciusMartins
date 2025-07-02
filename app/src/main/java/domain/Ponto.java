@@ -17,13 +17,13 @@ public class Ponto {
         }
     }
 
-    private boolean setX(double x){
+    public boolean setX(double x){
         if(x < 0 || x > ESCALA_X) return false; //Se ponto estiver fora da tela ou parâmetro negativo
         this.x = x;
         return true;
     }
 
-    private boolean setY(double y){
+    public boolean setY(double y){
         if(y < 0 || y > ESCALA_Y) return false; //Se ponto estiver fora da tela ou parâmetro negativo
         this.y = y;
         return true;

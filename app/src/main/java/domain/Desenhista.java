@@ -3,6 +3,8 @@ import domain.formas.*;
 import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
+import java.util.List;
+
 import static domain.Constantes.*;
 
 //Esta classe tem como objetivo administrar e desenhar os elementos na tela
@@ -26,17 +28,50 @@ public class Desenhista implements DrawListener {
 
     public void limpaTela(){ draw.clear(); }
 
-    public void desenha(String forma_atual,String cor_linha_atual, String cor_preenchimento_atual, Ponto ponto, int tamanho_atual){
+    public void desenha(String forma_atual,String cor_linha_atual, String cor_preenchimento_atual, Ponto ponto, int tamanho_atual, Relatorio relatorio){
         if(forma_atual.equals(FORMAS_DISP[0])){ //Circulo
-            Circulo circulo = new Circulo(cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
+            Circulo circulo = new Circulo(forma_atual, cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
             circulo.desenhar(this.draw, ponto);
+            relatorio.nova_forma(circulo);
+            relatorio.novo_objeto(circulo);
         } else if (forma_atual.equals(FORMAS_DISP[1])) {
 
         } else if (forma_atual.equals(FORMAS_DISP[2])) {
 
         } else {
-            Quadrado quadrado = new Quadrado(cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
+            Quadrado quadrado = new Quadrado(forma_atual, cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
             quadrado.desenhar(this.draw,ponto);
+            relatorio.nova_forma(quadrado);
+            relatorio.novo_objeto(quadrado);
+        }
+    }
+
+    public void desenha(ObjetoDesenho objeto_desenho, Ponto ponto){
+        if(objeto_desenho.getTipo_forma().equals(FORMAS_DISP[0])){
+            Circulo circulo = new Circulo(objeto_desenho.getTipo_forma(), objeto_desenho.getCor_linha(), objeto_desenho.getCor_preenchimento(), ponto, objeto_desenho.getTamanho());
+            circulo.desenhar(this.draw, ponto);
+        }
+    }
+
+    public void deslocarDesenhos(Relatorio relatorio, int x, int y){
+        List<ObjetoDesenho> lista_objetos = relatorio.getLista_objetos();
+        if(x != 0) {
+            for (ObjetoDesenho listaObjeto : lista_objetos) {
+                Ponto ponto = listaObjeto.getPontoCentral();
+                double x_ant = ponto.getX();
+                ponto.setX(x_ant + x);
+                lista_objetos.add(listaObjeto);
+            }
+        } else {
+            for (ObjetoDesenho listaObjeto : lista_objetos) {
+                Ponto ponto = listaObjeto.getPontoCentral();
+                double y_ant = ponto.getY();
+                ponto.setY(y_ant + y);
+                lista_objetos.add(listaObjeto);
+            }
+        }
+        for (ObjetoDesenho listaObjeto : lista_objetos) {
+            desenha(listaObjeto, listaObjeto.getPontoCentral());
         }
     }
 }

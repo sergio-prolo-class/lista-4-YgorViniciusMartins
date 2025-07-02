@@ -11,8 +11,8 @@ import java.awt.*;
 public class Circulo extends ObjetoDesenho implements FormaGeometrica {
     private double raio; //raio será o tamanho / 2 (tamanho = diâmetro)
 
-    public Circulo(String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
-        super(cor_linha, cor_preenchimento, ponto, tamanho);
+    public Circulo(String forma, String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
+        super(forma ,cor_linha, cor_preenchimento, ponto, tamanho);
         this.raio = this.getTamanho() / 2.0;
     }
 

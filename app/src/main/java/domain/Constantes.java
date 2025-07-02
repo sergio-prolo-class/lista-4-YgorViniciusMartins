@@ -17,7 +17,7 @@ public final class Constantes {
 
     //Constantes contemplando as possibilidades de elementos a sere utilizados
     public final static String[] CORES_DISP = {"Preto", "Verde", "Azul", "Vermelho"}; //Cores definidas
-    public final static String[] FORMAS_DISP = {"Circulo", "Losango", "Pentágono", "Quadrado"}; //Formas definidas
+    public final static String[] FORMAS_DISP = {"Circulo", "Pentágono", "Hexagono", "Quadrado"}; //Formas definidas
     public final static int PASSO_MIN = 10;
     public final static int PASSO_MAX = 150;
 

@@ -9,9 +9,8 @@ import java.awt.*;
 
 public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
 
-    public Quadrado(String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
-        super(cor_linha, cor_preenchimento, ponto, tamanho);
-        this.tamanho /= 2.0;
+    public Quadrado(String forma, String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
+        super(forma, cor_linha, cor_preenchimento, ponto, tamanho);
     }
 
     @Override
@@ -27,9 +26,9 @@ public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
     @Override
     public void desenhar(Draw draw, Ponto ponto){
         if(!this.getPreenchido()){ //Se não for preenchido
-            draw.square(ponto.getX(), ponto.getY(), getTamanho());
+            draw.square(ponto.getX(), ponto.getY(), getTamanho()/2.0);
         } else {
-            draw.filledSquare(ponto.getX(), ponto.getY(), getTamanho());
+            draw.filledSquare(ponto.getX(), ponto.getY(), getTamanho()/2.0);
             desenhaBorda(draw, ponto);
         }
     }
@@ -38,7 +37,7 @@ public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
     public void desenhaBorda(Draw draw, Ponto ponto){
         Color cor = draw.getPenColor();
         draw.setPenColor(Draw.BLACK);
-        draw.square(ponto.getX(), ponto.getY(), getTamanho());
+        draw.square(ponto.getX(), ponto.getY(), getTamanho()/2.0);
         draw.setPenColor(cor);
     }
 }
