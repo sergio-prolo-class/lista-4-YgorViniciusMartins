@@ -4,9 +4,35 @@
 package ifsc.poo;
 
 import domain.Desenhista;
+import domain.Ponto;
 import edu.princeton.cs.algs4.Draw;
+import edu.princeton.cs.algs4.DrawListener;
 
-public class App {
+import static domain.Constantes.*;
+
+public class App implements DrawListener {
+    private static Desenhista desenhista;
+    private static final Draw listener = new Draw();
+
+    private static int tamanho_atual;
+    private static String forma_atual;
+    private static String cor_linha_atual;
+    private static String cor_preenchimento_atual;
+    private static boolean preenchido; //True => Preenchido, False => Vazado
+    private static boolean tecla_pressionada;
+
+    public App(){
+        tamanho_atual = PASSO;
+        forma_atual = FORMA_DEFAULT;
+        cor_linha_atual = COR_LINHA_DEFAULT;
+        cor_preenchimento_atual = COR_PREENCHIMENTO_DEFAULT;
+        preenchido = false;
+        tecla_pressionada = false;
+        desenhista = new Desenhista(listener);
+        listener.addListener(this);
+    }
+
+
     public static void main(String[] args) {
         info();
         aplicacao();
@@ -17,8 +43,121 @@ public class App {
     }
 
     public static void aplicacao(){ //Roda a aplicação
-        Desenhista desenhista = new Desenhista(); //Cria o nosso desenhista
-        desenhista.exibeTela();
+        App app = new App();
+    }
 
+    public void setTamanho(int passo){
+        if(tamanho_atual + passo < PASSO_MIN || tamanho_atual + passo > PASSO_MAX) return;
+        tamanho_atual += passo;
+    }
+
+    public void setCorLinha(String cor){
+        cor_linha_atual = cor;
+    }
+
+    public void setCorLinha(int i){
+        cor_linha_atual = CORES_DISP[i];
+        seletorCor(cor_linha_atual);
+    }
+
+    public void setCorPreenchimento(int i){
+        cor_linha_atual = CORES_DISP[0];
+        cor_preenchimento_atual = CORES_DISP[i];
+        seletorCor(cor_preenchimento_atual);
+    }
+
+    public void seletorCor(String pincel){
+        if(pincel.equals(CORES_DISP[0])){ //Preto
+            desenhista.getDraw().setPenColor(Draw.BLACK);
+        } else if (pincel.equals(CORES_DISP[1])) { //Verde
+            desenhista.getDraw().setPenColor(Draw.GREEN);
+        } else if (pincel.equals(CORES_DISP[2])) { //Azul
+            desenhista.getDraw().setPenColor(Draw.BOOK_BLUE);
+        } else { //Vermelho
+            desenhista.getDraw().setPenColor(Draw.BOOK_RED);
+        }
+    }
+
+    public void setCorPreenchimento(String cor){
+        cor_preenchimento_atual = cor;
+    }
+
+    public void setForma(int i){
+        forma_atual = FORMAS_DISP[i];
+    }
+
+    @Override
+    public void mousePressed(double x, double y){
+        Ponto ponto = new Ponto(x,y);
+        desenhista.desenha(forma_atual, cor_linha_atual ,cor_preenchimento_atual, ponto, tamanho_atual);
+        desenhista.updateTela();
+    }
+
+    @Override
+    public void keyTyped(char c){
+        tecla_pressionada = true;
+        switch (c){
+            case 'f':
+                preenchido = !preenchido;
+                if(preenchido){
+                    setCorPreenchimento(cor_linha_atual);
+                    cor_linha_atual = COR_LINHA_DEFAULT; //Coloca a cor da linha como preta como solicitado
+                    System.out.println("Com Preenchimento");
+                } else {
+                    setCorLinha(cor_preenchimento_atual);
+                    cor_preenchimento_atual = COR_PREENCHIMENTO_DEFAULT; //Deixa o objeto vazado
+                    System.out.println("Sem Preenchimento");
+                }
+                break;
+            case 'q':
+                setTamanho(-PASSO);
+                System.out.println("Tamanho: " + tamanho_atual);
+                break;
+            case 'w':
+                setTamanho(PASSO);
+                System.out.println("Tamanho: " + tamanho_atual);
+                break;
+            case 'c':
+                desenhista.limpaTela();
+                desenhista.updateTela();
+                System.out.println("Tela foi limpa!");
+                break;
+            case 'p':
+                break;
+            default:
+                return;
+        }
+    }
+
+    @Override
+    public void keyReleased(int keycode){
+        tecla_pressionada = false;
+    }
+
+    @Override
+    public void keyPressed(int keycode){
+        tecla_pressionada = true;
+        switch (keycode){ //Movedor
+            case LEFT_KEY: //Esquerda
+                break;
+            case UP_KEY: //Cima
+                break;
+            case RIGHT_KEY: //Direita
+                break;
+            case DOWN_KEY: //Baixo
+                break;
+        }
+        if(keycode >= F1 && keycode <= F4) { //Seletor de formas
+            setForma(keycode - F1);
+            System.out.println("Figura: " + forma_atual);
+        } else if (keycode >= F5 && keycode <= F8) { //Seletor de cores
+            if(preenchido){
+                setCorPreenchimento(keycode - F5);
+                System.out.println("Cor: " + cor_preenchimento_atual);
+            } else {
+                setCorLinha(keycode - F5);
+                System.out.println("Cor: " + cor_linha_atual);
+            }
+        }
     }
 }

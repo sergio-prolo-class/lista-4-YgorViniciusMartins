@@ -1,24 +1,20 @@
 package domain;
 
-public class ObjetoDesenho {
+import edu.princeton.cs.algs4.Draw;
+
+public abstract class ObjetoDesenho {
     protected String cor_linha; //Cor da linha de contorno
     protected String cor_preenchimento; // Cor de preenchimento do objeto
     protected Ponto ponto_central; //Ponto central, obtido pelo click do mouse
-    protected int tamanho; //Tamanho da figura
-    private final boolean ehValido;
+    protected double tamanho; //Tamanho da figura
+    protected boolean preenchido;
 
     public ObjetoDesenho(String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
-        Desenhista desenhista = new Desenhista();
-        this.ehValido = ponto.getEhValido() && desenhista.corDisponivel(cor_linha) && desenhista.corDisponivel(cor_preenchimento);
-        if(this.ehValido){
-            this.ponto_central = ponto;
-            this.cor_linha = cor_linha;
-            this.cor_preenchimento = cor_preenchimento;
-        }
-    }
-
-    public boolean getEhValido(){
-        return this.ehValido;
+        this.cor_linha = cor_linha;
+        this.cor_preenchimento = cor_preenchimento;
+        this.ponto_central = ponto;
+        this.tamanho = tamanho;
+        this.preenchido = !cor_preenchimento.isEmpty();
     }
 
     public Ponto getPonto_central(){
@@ -33,4 +29,15 @@ public class ObjetoDesenho {
         return this.cor_preenchimento;
     }
 
+    public double getTamanho(){
+        return this.tamanho;
+    }
+
+    public boolean getPreenchido(){
+        return this.preenchido;
+    }
+
+    public void desenhar(Draw draw, Ponto ponto){}
+
+    public void desenhaBorda(Draw draw, Ponto ponto){}
 }
