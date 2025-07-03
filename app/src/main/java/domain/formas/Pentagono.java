@@ -7,11 +7,18 @@ import edu.princeton.cs.algs4.Draw;
 
 import java.awt.*;
 
+import static domain.Constantes.COLOR_LINHA_DEFAULT;
+
 public class Pentagono extends ObjetoDesenho implements FormaGeometrica {
     private double raio;
     private static final int NUM_LADOS = 5;
 
     public Pentagono(String forma, String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
+        super(forma ,cor_linha, cor_preenchimento, ponto, tamanho);
+        this.raio = tamanho/2.0;
+    }
+
+    public Pentagono(String forma, Color cor_linha, Color cor_preenchimento, Ponto ponto, int tamanho){
         super(forma ,cor_linha, cor_preenchimento, ponto, tamanho);
         this.raio = tamanho/2.0;
     }
@@ -39,8 +46,10 @@ public class Pentagono extends ObjetoDesenho implements FormaGeometrica {
             y[i] = ponto.getY() + (this.getRaio() * Math.sin((2 * Math.PI * i)/NUM_LADOS));
         }
         if(!this.getPreenchido()) { //Se não for preenchido
+            draw.setPenColor(getCor_linha());
             draw.polygon(x, y);
         } else {
+            draw.setPenColor(getCor_preenchimento());
             draw.filledPolygon(x,y);
             desenhaBorda(draw, x, y);
         }
@@ -48,9 +57,7 @@ public class Pentagono extends ObjetoDesenho implements FormaGeometrica {
 
     @Override
     public void desenhaBorda(Draw draw, double[] x, double[] y){
-        Color cor = draw.getPenColor();
-        draw.setPenColor(Draw.BLACK);
+        draw.setPenColor(COLOR_LINHA_DEFAULT);
         draw.polygon(x,y);
-        draw.setPenColor(cor);
     }
 }

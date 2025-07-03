@@ -7,9 +7,15 @@ import edu.princeton.cs.algs4.Draw;
 
 import java.awt.*;
 
+import static domain.Constantes.COLOR_LINHA_DEFAULT;
+
 public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
 
     public Quadrado(String forma, String cor_linha, String cor_preenchimento, Ponto ponto, int tamanho){
+        super(forma, cor_linha, cor_preenchimento, ponto, tamanho);
+    }
+
+    public Quadrado(String forma, Color cor_linha, Color cor_preenchimento, Ponto ponto, int tamanho){
         super(forma, cor_linha, cor_preenchimento, ponto, tamanho);
     }
 
@@ -26,8 +32,10 @@ public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
     @Override
     public void desenhar(Draw draw, Ponto ponto){
         if(!this.getPreenchido()){ //Se não for preenchido
+            draw.setPenColor(getCor_linha());
             draw.square(ponto.getX(), ponto.getY(), getTamanho()/2.0);
         } else {
+            draw.setPenColor(getCor_preenchimento());
             draw.filledSquare(ponto.getX(), ponto.getY(), getTamanho()/2.0);
             desenhaBorda(draw, ponto);
         }
@@ -35,9 +43,7 @@ public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
 
     @Override
     public void desenhaBorda(Draw draw, Ponto ponto){
-        Color cor = draw.getPenColor();
-        draw.setPenColor(Draw.BLACK);
+        draw.setPenColor(COLOR_LINHA_DEFAULT);
         draw.square(ponto.getX(), ponto.getY(), getTamanho()/2.0);
-        draw.setPenColor(cor);
     }
 }

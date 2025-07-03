@@ -1,5 +1,9 @@
 package domain;
 
+import edu.princeton.cs.algs4.Draw;
+
+import java.awt.*;
+
 public final class Constantes {
     //Constantes da tela
     public final static int ESCALA_X = 625; //Constante para a escala X da tela
@@ -17,6 +21,7 @@ public final class Constantes {
 
     //Constantes contemplando as possibilidades de elementos a sere utilizados
     public final static String[] CORES_DISP = {"Preto", "Verde", "Azul", "Vermelho"}; //Cores definidas
+    public final static Color[] COLORS_DISP = {Draw.BLACK, Draw.GREEN, Draw.BOOK_BLUE, Draw.BOOK_RED};
     public final static String[] FORMAS_DISP = {"Circulo", "Pentágono", "Hexagono", "Quadrado"}; //Formas definidas
     public final static int PASSO_MIN = 10;
     public final static int PASSO_MAX = 150;
@@ -25,6 +30,8 @@ public final class Constantes {
     public final static int PASSO = 10; //Quantidade aumentada/diminuida a cada vez que o usúario pressiona a tecla correspondente
     public final static String COR_LINHA_DEFAULT = "Preto"; //Cor Defalut
     public final static String COR_PREENCHIMENTO_DEFAULT = ""; //Cor de preencimento Default
+    public final static Color COLOR_LINHA_DEFAULT = Draw.BLACK;
+    public final static Color COLOR_PREENCHIMENTO_DEFAULT = Draw.WHITE;
     public final static String FORMA_DEFAULT = FORMAS_DISP[0];
 
     private Constantes(){}

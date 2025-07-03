@@ -60,25 +60,11 @@ public class App implements DrawListener {
 
     public void setCorLinha(int i){
         cor_linha_atual = CORES_DISP[i];
-        seletorCor(cor_linha_atual);
     }
 
     public void setCorPreenchimento(int i){
         cor_linha_atual = CORES_DISP[0];
         cor_preenchimento_atual = CORES_DISP[i];
-        seletorCor(cor_preenchimento_atual);
-    }
-
-    public void seletorCor(String pincel){
-        if(pincel.equals(CORES_DISP[0])){ //Preto
-            desenhista.getDraw().setPenColor(Draw.BLACK);
-        } else if (pincel.equals(CORES_DISP[1])) { //Verde
-            desenhista.getDraw().setPenColor(Draw.GREEN);
-        } else if (pincel.equals(CORES_DISP[2])) { //Azul
-            desenhista.getDraw().setPenColor(Draw.BOOK_BLUE);
-        } else { //Vermelho
-            desenhista.getDraw().setPenColor(Draw.BOOK_RED);
-        }
     }
 
     public void setCorPreenchimento(String cor){
