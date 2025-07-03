@@ -98,6 +98,7 @@ public class App implements DrawListener {
 
     @Override
     public void keyTyped(char c){
+        c = Character.toLowerCase(c);
         tecla_pressionada = true;
         switch (c){
             case 'f':
@@ -122,6 +123,7 @@ public class App implements DrawListener {
                 break;
             case 'c':
                 desenhista.limpaTela();
+                relatorio.limpaListas();
                 desenhista.updateTela();
                 System.out.println("Tela foi limpa!");
                 relatorio.limpasFormasArmazenadas();
@@ -132,7 +134,6 @@ public class App implements DrawListener {
                 System.out.println("Área das formas: " + relatorio.getAreaFormas());
                 break;
             default:
-                return;
         }
     }
 
@@ -146,9 +147,7 @@ public class App implements DrawListener {
         tecla_pressionada = true;
         switch (keycode){ //Movedor
             case LEFT_KEY: //Esquerda
-                System.out.println(keycode);
                 desenhista.deslocarDesenhos(relatorio, -PASSO, 0);
-                desenhista.updateTela();
                 break;
             case UP_KEY: //Cima
                 desenhista.deslocarDesenhos(relatorio, 0 , PASSO);

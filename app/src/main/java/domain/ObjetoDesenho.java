@@ -50,4 +50,6 @@ public abstract class ObjetoDesenho {
     public void desenhar(Draw draw, Ponto ponto){}
 
     public void desenhaBorda(Draw draw, Ponto ponto){}
+
+    public void desenhaBorda(Draw draw, double[] x, double[] y){}
 }

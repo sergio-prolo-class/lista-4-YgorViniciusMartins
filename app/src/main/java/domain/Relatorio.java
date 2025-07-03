@@ -46,4 +46,17 @@ public class Relatorio {
     public List<ObjetoDesenho> getLista_objetos(){
         return lista_objetos;
     }
+
+    public void limpaListaObjetos(){
+        lista_objetos.clear();
+    }
+
+    public void limpaListaFormasGeometricas(){
+        lista_formas.clear();
+    }
+
+    public void limpaListas(){
+        limpaListaObjetos();
+        limpaListaFormasGeometricas();
+    }
 }

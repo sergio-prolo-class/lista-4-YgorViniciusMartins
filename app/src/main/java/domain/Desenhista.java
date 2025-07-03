@@ -34,11 +34,17 @@ public class Desenhista implements DrawListener {
             circulo.desenhar(this.draw, ponto);
             relatorio.nova_forma(circulo);
             relatorio.novo_objeto(circulo);
-        } else if (forma_atual.equals(FORMAS_DISP[1])) {
-
-        } else if (forma_atual.equals(FORMAS_DISP[2])) {
-
-        } else {
+        } else if (forma_atual.equals(FORMAS_DISP[1])) { //Pentagono
+            Pentagono pentagono = new Pentagono(forma_atual, cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
+            pentagono.desenhar(this.draw, ponto);
+            relatorio.nova_forma(pentagono);
+            relatorio.novo_objeto(pentagono);
+        } else if (forma_atual.equals(FORMAS_DISP[2])) { //Hexagono
+            Hexagono hexagono = new Hexagono(forma_atual, cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
+            hexagono.desenhar(this.draw, ponto);
+            relatorio.nova_forma(hexagono);
+            relatorio.novo_objeto(hexagono);
+        } else { //Quadrado
             Quadrado quadrado = new Quadrado(forma_atual, cor_linha_atual, cor_preenchimento_atual, ponto, tamanho_atual);
             quadrado.desenhar(this.draw,ponto);
             relatorio.nova_forma(quadrado);
@@ -50,6 +56,15 @@ public class Desenhista implements DrawListener {
         if(objeto_desenho.getTipo_forma().equals(FORMAS_DISP[0])){
             Circulo circulo = new Circulo(objeto_desenho.getTipo_forma(), objeto_desenho.getCor_linha(), objeto_desenho.getCor_preenchimento(), ponto, objeto_desenho.getTamanho());
             circulo.desenhar(this.draw, ponto);
+        }else if (objeto_desenho.getTipo_forma().equals(FORMAS_DISP[1])) { //Pentagono
+            Pentagono pentagono = new Pentagono(objeto_desenho.getTipo_forma(), objeto_desenho.getCor_linha(), objeto_desenho.getCor_preenchimento(), ponto, objeto_desenho.getTamanho());
+            pentagono.desenhar(this.draw, ponto);
+        } else if (objeto_desenho.getTipo_forma().equals(FORMAS_DISP[2])) { //Hexagono
+            Hexagono hexagono = new Hexagono(objeto_desenho.getTipo_forma(), objeto_desenho.getCor_linha(), objeto_desenho.getCor_preenchimento(), ponto, objeto_desenho.getTamanho());
+            hexagono.desenhar(this.draw, ponto);
+        } else { //Quadrado
+            Quadrado quadrado = new Quadrado(objeto_desenho.getTipo_forma(), objeto_desenho.getCor_linha(), objeto_desenho.getCor_preenchimento(), ponto, objeto_desenho.getTamanho());
+            quadrado.desenhar(this.draw,ponto);
         }
     }
 
@@ -60,18 +75,18 @@ public class Desenhista implements DrawListener {
                 Ponto ponto = listaObjeto.getPontoCentral();
                 double x_ant = ponto.getX();
                 ponto.setX(x_ant + x);
-                lista_objetos.add(listaObjeto);
             }
         } else {
             for (ObjetoDesenho listaObjeto : lista_objetos) {
                 Ponto ponto = listaObjeto.getPontoCentral();
                 double y_ant = ponto.getY();
                 ponto.setY(y_ant + y);
-                lista_objetos.add(listaObjeto);
             }
         }
+        this.limpaTela();
         for (ObjetoDesenho listaObjeto : lista_objetos) {
             desenha(listaObjeto, listaObjeto.getPontoCentral());
         }
+        this.updateTela();
     }
 }

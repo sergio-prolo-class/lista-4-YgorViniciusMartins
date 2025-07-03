@@ -20,10 +20,12 @@ public class Circulo extends ObjetoDesenho implements FormaGeometrica {
         return this.raio;
     }
 
+    @Override
     public double getArea(){
         return Math.PI * Math.pow(this.raio, 2);
     }
 
+    @Override
     public double getPerimetro(){
         return 2 * Math.PI * this.raio;
     }
