@@ -65,3 +65,4 @@ suas teclas equivalentes:
 
 Por fim, segue o diagrama UML contendo a base para a implementação deste App:
 
+<img width="1978" height="1077" alt="Image" src="https://github.com/user-attachments/assets/d43290b3-2ac1-4457-914d-afeb9e9e2821" />
