@@ -3,6 +3,7 @@ package domain;
 import java.util.LinkedList;
 import java.util.List;
 
+//Esta classe tem como objetivo facilitar a produção das estastíticas da tela, além de armazenar as formas que estão presentes
 public class Relatorio {
     private static final List<FormaGeometrica> lista_formas = new LinkedList<>();
     private static final List<ObjetoDesenho> lista_objetos = new LinkedList<>();
@@ -19,7 +20,7 @@ public class Relatorio {
         return lista_formas.size();
     }
 
-    public double getAreaFormas(){
+    public double getAreaFormas(){ //Caso de polimorfismo, cada forma geométrica possui sua própria forma de calcula sua área
         double area_total = 0;
         for (FormaGeometrica listaForma : lista_formas) {
             area_total += listaForma.getArea();
@@ -27,7 +28,7 @@ public class Relatorio {
         return area_total;
     }
 
-    public double getPerimetroFormas(){
+    public double getPerimetroFormas(){ //Caso de polimorfismo, cada forma geométrica possui sua própria forma de calcula seu perímetro
         double perimetro_total = 0;
         for (FormaGeometrica listaForma : lista_formas) {
             perimetro_total += listaForma.getPerimetro();

@@ -4,6 +4,7 @@ import edu.princeton.cs.algs4.Draw;
 
 import java.awt.*;
 
+//Classe que tem como objetivo deixar o código mais limpo, guardando todas as constantes
 public final class Constantes {
     //Constantes da tela
     public final static int ESCALA_X = 625; //Constante para a escala X da tela

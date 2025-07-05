@@ -27,19 +27,19 @@ public class Hexagono extends ObjetoDesenho implements FormaGeometrica {
     @Override
     public double getArea(){
         return ((5.0/2.0) * Math.pow ((this.getRaio()),2) *Math.sin(72));
-    }
+    } //Polimorfismo
 
     @Override
     public double getPerimetro(){
         return NUM_LADOS * this.getTamanho();
-    }
+    } //Polimorfismo
 
     public double getRaio(){
         return this.raio;
-    }
+    } //Polimorfismo
 
     @Override
-    public void desenhar(Draw draw, Ponto ponto) {
+    public void desenhar(Draw draw, Ponto ponto) { //Polimorfismo
         double[] x = new double[NUM_LADOS];
         double[] y = new double[NUM_LADOS];
         for (int i = 0; i < NUM_LADOS; i++) {
@@ -57,7 +57,7 @@ public class Hexagono extends ObjetoDesenho implements FormaGeometrica {
     }
 
     @Override
-    public void desenhaBorda(Draw draw, double[] x, double[] y){
+    public void desenhaBorda(Draw draw, double[] x, double[] y){ //Polimorfismo
         draw.setPenColor(COLOR_LINHA_DEFAULT);
         draw.polygon(x,y);
     }

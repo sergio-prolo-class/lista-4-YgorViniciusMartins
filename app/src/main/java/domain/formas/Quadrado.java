@@ -22,15 +22,15 @@ public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
     @Override
     public double getPerimetro(){
         return 4 * this.getTamanho();
-    }
+    } //Polimorfismo
 
     @Override
     public double getArea(){
         return Math.pow(this.getTamanho(), 2);
-    }
+    } //Polimorfismo
 
     @Override
-    public void desenhar(Draw draw, Ponto ponto){
+    public void desenhar(Draw draw, Ponto ponto){ //Polimorfismo
         if(!this.getPreenchido()){ //Se não for preenchido
             draw.setPenColor(getCor_linha());
             draw.square(ponto.getX(), ponto.getY(), getTamanho()/2.0);
@@ -42,7 +42,7 @@ public class Quadrado extends ObjetoDesenho implements FormaGeometrica {
     }
 
     @Override
-    public void desenhaBorda(Draw draw, Ponto ponto){
+    public void desenhaBorda(Draw draw, Ponto ponto){ //Polimorfismo
         draw.setPenColor(COLOR_LINHA_DEFAULT);
         draw.square(ponto.getX(), ponto.getY(), getTamanho()/2.0);
     }

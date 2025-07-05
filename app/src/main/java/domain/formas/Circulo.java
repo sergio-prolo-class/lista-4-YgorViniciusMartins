@@ -10,6 +10,7 @@ import java.awt.*;
 
 import static domain.Constantes.*;
 
+//Classe que representa o circulo
 public class Circulo extends ObjetoDesenho implements FormaGeometrica {
     private double raio; //raio será o tamanho / 2 (tamanho = diâmetro)
 
@@ -30,15 +31,15 @@ public class Circulo extends ObjetoDesenho implements FormaGeometrica {
     @Override
     public double getArea(){
         return Math.PI * Math.pow(this.raio, 2);
-    }
+    } //Polimorfismo
 
     @Override
     public double getPerimetro(){
         return 2 * Math.PI * this.raio;
-    }
+    } //Polimorfismo
 
     @Override
-    public void desenhar(Draw draw, Ponto ponto){
+    public void desenhar(Draw draw, Ponto ponto){ //Polimorfismo
         if(!this.getPreenchido()){ //Se não for preenchido
             draw.setPenColor(getCor_linha());
             draw.circle(ponto.getX(), ponto.getY(), this.getRaio());
@@ -50,7 +51,7 @@ public class Circulo extends ObjetoDesenho implements FormaGeometrica {
     }
 
     @Override
-    public void desenhaBorda(Draw draw, Ponto ponto){
+    public void desenhaBorda(Draw draw, Ponto ponto){ //Polimorfismo
         draw.setPenColor(COLOR_LINHA_DEFAULT);
         draw.circle(ponto.getX(), ponto.getY(), this.getRaio());
     }

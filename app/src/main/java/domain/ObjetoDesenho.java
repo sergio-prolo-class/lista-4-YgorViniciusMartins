@@ -6,6 +6,7 @@ import java.awt.*;
 
 import static domain.Constantes.*;
 
+//Esta classe abstrata servirá como classe pai para nossos objetos de desenho
 public abstract class ObjetoDesenho {
     protected Color cor_linha; //Cor da linha de contorno
     protected Color cor_preenchimento; // Cor de preenchimento do objeto
@@ -60,11 +61,11 @@ public abstract class ObjetoDesenho {
         return this.tipo_forma;
     }
 
-    public void desenhar(Draw draw, Ponto ponto){}
+    public void desenhar(Draw draw, Ponto ponto){} //Cada classe poussirá sua própria forma de ser desenhada
 
-    public void desenhaBorda(Draw draw, Ponto ponto){}
+    public void desenhaBorda(Draw draw, Ponto ponto){} //Cada classe poussirá sua própria forma de ter sua borda desenhada
 
-    public void desenhaBorda(Draw draw, double[] x, double[] y){}
+    public void desenhaBorda(Draw draw, double[] x, double[] y){} //Cada classe poussirá sua própria forma de ter sua borda desenhada
 
     public Color seletorCor(String pincel){
         Color cor;

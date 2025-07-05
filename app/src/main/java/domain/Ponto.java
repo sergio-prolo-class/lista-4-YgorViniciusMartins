@@ -2,6 +2,7 @@ package domain;
 
 import static domain.Constantes.*;
 
+//Esta classe tem como objetivo armazenar as coordenadas do click do mouse
 public class Ponto {
     private double x; //Posição x com relação a tela do ponto
     private double y; //Posição y com relação a tela do ponto

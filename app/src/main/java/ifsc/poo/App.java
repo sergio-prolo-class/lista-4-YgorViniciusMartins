@@ -35,14 +35,8 @@ public class App implements DrawListener {
         relatorio = new Relatorio();
     }
 
-
     public static void main(String[] args) {
-        info();
         aplicacao();
-    }
-
-    public static void info(){ //Informa o usuário de como o programa funciona
-
     }
 
     public static void aplicacao(){ //Roda a aplicação
@@ -76,14 +70,14 @@ public class App implements DrawListener {
     }
 
     @Override
-    public void mousePressed(double x, double y){
+    public void mousePressed(double x, double y){ //Responsável por realizar a ação do click
         Ponto ponto = new Ponto(x,y);
         desenhista.desenha(forma_atual, cor_linha_atual ,cor_preenchimento_atual, ponto, tamanho_atual, relatorio);
         desenhista.updateTela();
     }
 
     @Override
-    public void keyTyped(char c){
+    public void keyTyped(char c){ //Responsávle por lidar com as teclas de letras
         c = Character.toLowerCase(c);
         tecla_pressionada = true;
         switch (c){
@@ -129,7 +123,7 @@ public class App implements DrawListener {
     }
 
     @Override
-    public void keyPressed(int keycode){
+    public void keyPressed(int keycode){ //Responsável por lidar com as teclas pressionadas
         tecla_pressionada = true;
         switch (keycode){ //Movedor
             case LEFT_KEY: //Esquerda
