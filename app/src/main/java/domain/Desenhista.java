@@ -8,7 +8,7 @@ import java.util.List;
 import static domain.Constantes.*;
 
 //Esta classe tem como objetivo administrar e desenhar os elementos na tela
-public class Desenhista implements DrawListener {
+public class Desenhista {
     private final Draw draw; //Objeto draw para gerenciar assuntos como a tela em si e seus afins
 
     public Desenhista(Draw draw){

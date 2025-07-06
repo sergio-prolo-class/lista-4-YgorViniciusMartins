@@ -26,7 +26,7 @@ public class Hexagono extends ObjetoDesenho implements FormaGeometrica {
 
     @Override
     public double getArea(){
-        return ((5.0/2.0) * Math.pow ((this.getRaio()),2) *Math.sin(72));
+        return ((3*Math.sqrt(3)/2) * Math.pow(this.getRaio(),2));
     } //Polimorfismo
 
     @Override
